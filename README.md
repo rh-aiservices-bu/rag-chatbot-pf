@@ -1,1 +1,1 @@
-# rag-chatbot-pf
+# RAG Chatbot with Patternfly
