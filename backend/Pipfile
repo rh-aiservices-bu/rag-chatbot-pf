@@ -3,9 +3,20 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
+[[source]]
+url = "https://download.pytorch.org/whl/cu118/"
+verify_ssl = false
+name = "pytorch"
+
 [packages]
 fastapi = "~=0.104.0"
+langchain = "==0.0.324"
 python-dotenv = "~=1.0.0"
+redis = "~=5.0.1"
+sentence-transformers = "~=2.2.2"
+text-generation = "~=0.6.1"
+torch = {version = "==2.1.0+cu118", index = "pytorch"}
+torchvision = {version = "==0.16.0+cu118", index = "pytorch"}
 uvicorn = "~=0.23.2"
 
 [dev-packages]

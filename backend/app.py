@@ -1,9 +1,19 @@
-""" Path and Route services API """
+""" Backend for RAG Chatbot """
 import os
+from collections.abc import Generator
+from queue import Empty, Queue
+from threading import Thread
+from typing import Optional
 
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from langchain.callbacks.base import BaseCallbackHandler
+from langchain.chains import RetrievalQA
+from langchain.embeddings.huggingface import HuggingFaceEmbeddings
+from langchain.llms import HuggingFaceTextGenInference
+from langchain.prompts import PromptTemplate
+from langchain.vectorstores.redis import Redis
 from pydantic import BaseModel
 from uvicorn import run
 
