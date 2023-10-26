@@ -21,7 +21,7 @@
     "build:backend": "cd ./backend && npm run build",
     "build:frontend": "cd ./frontend && npm run build",
     "dev": "run-p -l dev:*",
-    "dev:backend": "cd ./backend && npm run start:dev",
+    "dev:backend": "cd ./backend && source ./.venv/bin/activate && nodemon app.py",
     "dev:frontend": "cd ./frontend && npm run start:dev",
     "format": "prettier --write \"backend/**/*.ts\" \"frontend/**/*.ts\" \"frontend/**/*.tsx\"",
     "make": "make",
