@@ -1,10 +1,13 @@
 """ Backend for RAG Chatbot """
+import logging
 import os
 from collections.abc import Generator
 from queue import Empty, Queue
 from threading import Thread
 from typing import Optional
 
+import redis_utils
+from backend_config import LOG_LEVELS, LOGGING_CONFIG
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,9 +19,21 @@ from langchain.prompts import PromptTemplate
 from langchain.vectorstores.redis import Redis
 from pydantic import BaseModel
 from uvicorn import run
+from dotenv import dotenv_values
 
 # Load local env vars if present
 load_dotenv()
+
+# Initialize logger
+logger = logging.getLogger("app")
+
+# Get config
+config = {
+    **dotenv_values(".env"),  # load shared development variables
+    **dotenv_values(".env.secret"),  # load sensitive variables
+    **os.environ,  # override loaded values with environment variables
+}
+logger.info(f'Config: INFERENCE_SERVER_URL={config["INFERENCE_SERVER_URL"]}')
 
 # App creation
 app = FastAPI()

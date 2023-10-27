@@ -31,7 +31,7 @@
     "make:undeploy": "make undeploy",
     "make:push": "make push",
     "postinstall": "run-p postinstall:*",
-    "postinstall:backend": "cd ./backend && npm install",
+    "postinstall:backend": "cd ./backend && pipenv install",
     "postinstall:frontend": "cd ./frontend && npm install",
     "start": "run-p start:*",
     "start:backend": "cd ./backend && npm start",
