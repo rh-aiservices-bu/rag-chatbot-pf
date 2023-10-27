@@ -1,6 +1,6 @@
 import logging
 import logging.config
-import backend_logging
+import app_logging
 from typing import (
     Any,
     Dict,
@@ -19,12 +19,12 @@ LOGGING_CONFIG: Dict[str, Any] = {
     "disable_existing_loggers": False,
     "formatters": {
         "default": {
-            "()": "backend_logging.DefaultFormatter",
+            "()": "app_logging.DefaultFormatter",
             "fmt": "%(levelprefix)s %(message)s",
             "use_colors": None,
         },
         "access": {
-            "()": "backend_logging.AccessFormatter",
+            "()": "app_logging.AccessFormatter",
             "fmt": '%(levelprefix)s %(client_addr)s - "%(request_line)s" %(status_code)s',  # noqa: E501
         },
     },
